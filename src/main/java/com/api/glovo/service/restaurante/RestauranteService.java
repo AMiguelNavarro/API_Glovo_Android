@@ -7,4 +7,5 @@ import java.util.List;
 public interface RestauranteService {
     List<Restaurante> getRestaurantes();
     List<Restaurante> getRestaurantesPorCategoria(String categoria);
+    List<Restaurante> getRestaurantesTop10();
 }

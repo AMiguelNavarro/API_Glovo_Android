@@ -25,4 +25,9 @@ public class RestauranteServiceImp implements RestauranteService{
         int idCategoria = restauranteRepository.findIdCategoriaByCategoria(categoria);
         return restauranteRepository.findRestaurantesById(idCategoria);
     }
+
+    @Override
+    public List<Restaurante> getRestaurantesTop10() {
+        return restauranteRepository.findRestaurantesTop10();
+    }
 }

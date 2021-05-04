@@ -30,4 +30,10 @@ public class RestauranteController {
         return new ResponseEntity<>(listadoRestaurantes, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/restaurantes/top10")
+    public ResponseEntity<List<Restaurante>> getRestaurantesTop10() {
+        List<Restaurante> listadoRestaurantes = restauranteService.getRestaurantesTop10();
+        return new ResponseEntity<>(listadoRestaurantes, HttpStatus.OK);
+    }
+
 }

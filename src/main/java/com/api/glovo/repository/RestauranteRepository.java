@@ -18,4 +18,7 @@ public interface RestauranteRepository extends CrudRepository<Restaurante, Integ
     @Query(name = "buscarRestaurantesPorIdCategoria", value = "SELECT * FROM restaurantes WHERE id_categoria = :idCategoria", nativeQuery = true)
     List<Restaurante> findRestaurantesById(int idCategoria);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM restaurantes ORDER BY num_ventas DESC LIMIT 10")
+    List<Restaurante> findRestaurantesTop10();
+
 }
