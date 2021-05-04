@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,11 +15,18 @@ import java.util.List;
 public class RestauranteController {
 
     @Autowired
-    RestauranteService restauranteService;
+    private RestauranteService restauranteService;
 
     @GetMapping(value = "/restaurantes")
     public ResponseEntity<List<Restaurante>> getRestaurantes() {
         List<Restaurante> listadoRestaurantes = restauranteService.getRestaurantes();
+        return new ResponseEntity<>(listadoRestaurantes, HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/restaurantes/filtro")
+    public ResponseEntity<List<Restaurante>> getRestaurantesPorCategoria(@RequestParam("categoria") String categoria){
+        List<Restaurante> listadoRestaurantes = restauranteService.getRestaurantesPorCategoria(categoria);
         return new ResponseEntity<>(listadoRestaurantes, HttpStatus.OK);
     }
 
