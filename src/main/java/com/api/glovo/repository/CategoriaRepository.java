@@ -12,4 +12,5 @@ import java.util.List;
 public interface CategoriaRepository extends CrudRepository<Categoria, Integer> {
     @Query(nativeQuery = true, value = "SELECT * FROM categorias;")
     List<Categoria> getCategorias();
+    Categoria findByCategoria(String categoria);
 }

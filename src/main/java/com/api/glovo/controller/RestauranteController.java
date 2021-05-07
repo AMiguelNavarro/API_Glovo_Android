@@ -1,13 +1,12 @@
 package com.api.glovo.controller;
 
 import com.api.glovo.domain.Restaurante;
+import com.api.glovo.domain.RestauranteDTO;
 import com.api.glovo.service.restaurante.RestauranteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +33,12 @@ public class RestauranteController {
     public ResponseEntity<List<Restaurante>> getRestaurantesTop10() {
         List<Restaurante> listadoRestaurantes = restauranteService.getRestaurantesTop10();
         return new ResponseEntity<>(listadoRestaurantes, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/restaurantes")
+    public ResponseEntity<Restaurante> addRestaurante(@RequestBody RestauranteDTO restauranteDTO) {
+        Restaurante nuevoRestaurante = restauranteService.addRestaurante(restauranteDTO);
+        return new ResponseEntity<>(nuevoRestaurante, HttpStatus.OK);
     }
 
 }
